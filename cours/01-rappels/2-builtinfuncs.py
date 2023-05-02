@@ -33,9 +33,9 @@ def compteur(n):
         yield i
 
 i = compteur(10)
-# print(next(i))
-# print(next(i))
-# print(next(i))
+print(next(i))
+print(next(i))
+print(next(i))
 for i in compteur(10):
     print(i)
 

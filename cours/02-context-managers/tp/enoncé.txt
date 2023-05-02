@@ -1,0 +1,25 @@
+Objectif : Créez un context manager pour gérer la connexion
+à une base de données SQLite et effectuer des opérations CRUD (Create, Read, Update, Delete) sur une table.
+Vous devrez créer deux versions du context manager :
+une version basée sur les classes et une version basée sur les fonctions.
+
+Version basée sur les classes :
+- Constructeur __init__(self, db_name) pour accepter un nom de base de données comme argument.
+-  __enter__() pour établir la connexion à la base de données et créer un curseur.
+- Retournez le curseur pour qu'il puisse être utilisé dans le bloc with.
+- __exit__() pour fermer le curseur et la connexion à la base de données.
+- Utilisez votre context manager pour :
+- créer une table
+- insérer des données
+- lire des données
+- mettre à jour des données
+- supprimer des données.
+
+Version basée sur les fonctions :
+- Importez le décorateur contextmanager du module contextlib.
+- Créez une fonction génératrice nommée database_connection et décorez-la avec @contextmanager.
+- La fonction doit accepter un nom de base de données comme argument.
+- Etablissez la connexion à la base de données
+- Créez un curseur
+- Utilisez yield pour séparer les opérations
+- Utilisez votre context manager database_connection pour effectuer les mêmes opérations que précédemment.
