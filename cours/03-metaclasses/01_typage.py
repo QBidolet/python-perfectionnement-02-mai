@@ -3,8 +3,10 @@ class SimpleMeta(type):
     def __new__(meta, name, bases, dct):
         return super().__new__(meta, name, bases, dct)
 
+
 class MyClass(metaclass=SimpleMeta):
     pass
+
 
 # 2/ Créer une métaclasse pour modifier le typage.
 
@@ -17,26 +19,43 @@ class TypedMeta(type):
 
         return super().__new__(meta, name, bases, dct)
 
+
 class TypedClass(metaclass=TypedMeta):
     nombre = 42
     chaine = "Hello World!"
 
+
 typed_class = TypedClass()
 print(typed_class.nombre, type(typed_class.nombre))
 
+
 # 3/ Créer une métaclasse pour vérifier les types
-class TypeCheckingMeta(TypedMeta):
+class TypedMeta(type):
+    def __new__(cls, name, bases, dct):
+        typed_attributes = {
+            key: value for key, value in dct.items()
+            if isinstance(value, type)
+        }
+        print(typed_attributes)
+        for key, value in typed_attributes.items():
+            dct.pop(key)
+        dct['_typed_attributes'] = typed_attributes
+        return super().__new__(cls, name, bases, dct)
+
     def __setattr__(cls, name, value):
-        if name in cls.__dict__:
-            attr_type = cls.__dict__[name][1]
+        if name in cls._typed_attributes:
+            attr_type = cls._typed_attributes[name]
+
             if not isinstance(value, attr_type):
                 raise TypeError(f"Type incorrect pour l'attribut {name} : attendu {attr_type}, obtenu {type(value)}")
         super().__setattr__(name, value)
 
-class TypeCheckingClass(metaclass=TypeCheckingMeta):
+
+class TypeCheckingClass(metaclass=TypedMeta):
     nombre = 42
-    chaine = "Hello world!"
+    chaine = "Hello"
+
 
 obj = TypeCheckingClass()
-obj.nombre = 13 # valeur OK
-obj.nombre = "Un str."
+obj.nombre = 13  # valeur OK
+obj.nombre = "Un str."  # Lève une exception TypeError

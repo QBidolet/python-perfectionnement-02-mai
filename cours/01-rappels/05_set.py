@@ -25,7 +25,7 @@ for element in avengers:
     print(element)
 
 # exemple typique : supprimer des doublons
-liste = [1, 1, 2, 2, 3, 4, 5, 6]
+liste = ["France", "Allemagne", "Allemagne", "France"]
 print(liste)
 mon_set = set(liste)
 print(mon_set)
