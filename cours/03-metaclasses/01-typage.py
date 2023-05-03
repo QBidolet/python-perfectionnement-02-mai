@@ -51,8 +51,6 @@ class TypedMeta(type):
             if not isinstance(value, attr_type):
                 # on lève une exception pour bloquer l'attribution de la nouvelle valeur
                 raise TypeError(f"Type incorrect pour l'attribut {name} : attendu {attr_type}, obtenu {type(value)}")
-
-        # Attribut la nouvelle valeur
         super().__setattr__(name, value)
 
 
