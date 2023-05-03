@@ -1,0 +1,11 @@
+Objectif : Création d'une métaclasse pour valider les noms d'attributs.
+
+La métaclasse doit "valider" les noms d'attributs des classes qui en héritent.
+Les noms d'attributs doivent commencer par une lettre minuscule et ne pas contenir de caractère spéciaux.
+
+étapes :
+
+- Creez la métaclass ValidAttributesNames
+- Redefinir la méthode __new__ pour valider les noms d'attributs
+    Pour chaque attribut de la classe, valider son nom
+    Si un attribut à un nom invalide, levez une exception ValueError avec un message approprié.

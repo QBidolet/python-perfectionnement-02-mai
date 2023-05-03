@@ -8,7 +8,7 @@ class MyClass(metaclass=SimpleMeta):
     pass
 
 
-# 2/ Créer une métaclasse pour modifier le typage.
+# 2/ Créer une métaclasse pour modifier le typage des attributs.
 
 class TypedMeta(type):
     def __new__(meta, name, bases, dct):
@@ -43,11 +43,16 @@ class TypedMeta(type):
         return super().__new__(cls, name, bases, dct)
 
     def __setattr__(cls, name, value):
+        # Bout de code pour retrouver le type initial de l'attribut
         if name in cls._typed_attributes:
             attr_type = cls._typed_attributes[name]
 
+            # si le type de la nouvelle valeur (value) ne correspond pas
             if not isinstance(value, attr_type):
+                # on lève une exception pour bloquer l'attribution de la nouvelle valeur
                 raise TypeError(f"Type incorrect pour l'attribut {name} : attendu {attr_type}, obtenu {type(value)}")
+
+        # Attribut la nouvelle valeur
         super().__setattr__(name, value)
 
 
