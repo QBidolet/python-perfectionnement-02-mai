@@ -6,4 +6,10 @@
 """
 
 # exemple d'importation
-from .mon_module import hello_world
+from .mon_dossier import hello_world
+
+# On peut aussi déclarer des constantes
+CONSTANTE = 42
+
+# C'est aussi le fichier où on initialise les configurations nécessaire
+# pour la configuration de base de données, tous fichiers de configuration etc.
