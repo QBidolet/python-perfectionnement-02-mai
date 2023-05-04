@@ -18,8 +18,8 @@ print(result.read().decode())
 
 # POST
 
-url = "http://httpbin/org/post"
+url = "http://httpbin.org/post"
 data = data.encode()
-result = urllib.request.urlopen(url, data=data)
+result = urllib.request.urlopen(url, data=data, timeout=15)
 
 print(result.read().decode())
