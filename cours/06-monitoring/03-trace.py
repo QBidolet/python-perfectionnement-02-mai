@@ -12,7 +12,7 @@ def recursive_function(n):
 
 
 tracer = trace.Trace(count=True, trace=True)
-tracer.runfunc(recursive_function, 5)
+tracer.runfunc(recursive_function, 5) # 5 étant l'argument n
 
 results = tracer.results()
 results.write_results(coverdir="trace_report", show_missing=True, summary=True)
