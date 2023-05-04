@@ -18,8 +18,10 @@ def salary(nombre_transaction):
 
 if __name__ == '__main__':
     nombre_transaction = 1_000_000
+
     achat = threading.Thread(target=shop, args=(nombre_transaction,))
     salaire = threading.Thread(target=salary, args=(nombre_transaction,))
+
     achat.start()
     salaire.start()
     # la fct join fait qu'on passe pas à la suite tant que les thread sont pas finis (donc qu'ils ont acheté 10000000)
