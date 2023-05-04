@@ -1,6 +1,7 @@
 Freeze le package pour créer un executable
 
 1/ Installer pyinstaller
+
 pip install pyinstaller
 
 2/ Naviguer dans le bon répertoire, le répertoire racine de l'application que vous voulez distribuer.
