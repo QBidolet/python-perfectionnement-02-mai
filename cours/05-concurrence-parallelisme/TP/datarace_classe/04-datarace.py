@@ -34,6 +34,6 @@ if __name__ == '__main__':
     withdraw_thread.start()
 
     deposit_thread.join()
-    deposit_thread.join()
+    withdraw_thread.join()
 
     print(f"Résultat final : {account.balance}")

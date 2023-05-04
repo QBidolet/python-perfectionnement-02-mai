@@ -1,5 +1,6 @@
 import threading
 
+
 class BankAccount:
     def __init__(self, balance):
         self.balance = balance
@@ -15,13 +16,16 @@ class BankAccount:
             new_balance = self.balance - amount
             self.balance = new_balance
 
+
 def deposit_money(account, amount, times):
     for _ in range(times):
         account.deposit(amount)
 
+
 def withdraw_money(account, amount, times):
     for _ in range(times):
         account.withdraw(amount)
+
 
 if __name__ == '__main__':
     num_transaction = 1_000_000
@@ -34,6 +38,6 @@ if __name__ == '__main__':
     withdraw_thread.start()
 
     deposit_thread.join()
-    deposit_thread.join()
+    withdraw_thread.join()
 
     print(f"Résultat final : {account.balance}")
