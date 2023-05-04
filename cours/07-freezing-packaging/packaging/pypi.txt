@@ -1,0 +1,32 @@
+Pour "freeze" votre venv :
+pip freeze > requirements.txt
+
+Pour installer les packages depuis requirements.txt :
+pip install -r requirements.txt
+
+Pour publier votre package sur Pypi.
+
+1/ Installer les outils prérequis :
+    - setuptools
+    - wheel
+    - twine
+
+pip install setuptools wheel twine
+
+2/ S'assurer que le package a une structure similaire à celle-ci :
+my_package/
+├─ my_package/
+│   ├─ __init__.py
+│   └─ module.py
+├─ setup.py
+└─ README.md
+
+3/ Remplir le setup.py correctement (voir fichier).
+
+4/ Créer la distribution de votre package.
+
+python setup.py sdist bdist_wheel
+
+5/ Upload notre distribution
+
+twine upload dist/*
