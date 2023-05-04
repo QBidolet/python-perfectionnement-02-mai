@@ -1,3 +1,4 @@
+import json
 import urllib.request
 
 url = "https://swapi.dev/api/people/1"
@@ -17,4 +18,10 @@ print("#"*25)
 print("Datas")
 print("#"*25)
 datas = result.read()
-print(datas.decode())
+datas_str = datas.decode()
+datas_json = json.loads(datas_str)
+
+print(datas_json)
+print(datas_json["name"])
+print(datas_json["mass"])
+print(datas_json["eye_color"])
