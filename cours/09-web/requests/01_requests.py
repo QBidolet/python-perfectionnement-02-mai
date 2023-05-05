@@ -8,7 +8,9 @@ print(result)
 # 2/ Envoyer des paramètres avec GET
 datas = {"key1": "value1", "key2": "value2"}
 url = "http://httpbin.org/get"
+
 result = requests.get(url, params=datas)
+
 print(result.text)
 
 # 3/ Envoyer des paramètres avec POST
