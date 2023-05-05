@@ -1,18 +1,22 @@
 import sqlite3
 from contextlib import contextmanager
+import threading
+
+mutex = threading.Lock()
 
 
 @contextmanager
 def database_connection():
-    connection = sqlite3.connect("app.db")
-    cursor = connection.cursor()
+    with mutex:
+        connection = sqlite3.connect("../app.db")
+        cursor = connection.cursor()
 
-    try:
-        yield cursor
-    finally:
-        connection.commit()
-        cursor.close()
-        connection.close()
+        try:
+            yield cursor
+        finally:
+            connection.commit()
+            cursor.close()
+            connection.close()
 
 
 def create_table():

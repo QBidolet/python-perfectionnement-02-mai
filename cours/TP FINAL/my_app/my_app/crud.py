@@ -43,7 +43,8 @@ def get_message(message_id):
     with database_connection() as cursor:
         cursor.execute("SELECT * FROM messages WHERE id = ?", (message_id,))
         message = cursor.fetchone()
-    return Message(message.id, message.text)
+    if message is not None:
+        return Message(*message)
 
 
 def update_message(message):
