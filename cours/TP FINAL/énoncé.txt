@@ -12,7 +12,8 @@ Enoncé détaillé :
 1/ Créez une base de données SQLite avec deux tables : users et messages.
 Utilisez un context manager pour gérer la connexion et effectuer les opérations CRUD.
 
-2/ Implémentez une métaclass pour valider les attributs des utilisateurs (par exemple, vérifier que l'âge est supérieur à 0) lors de la création d'un utilisateur.
+2/ Implémentez une métaclass pour valider les attributs des utilisateurs (par exemple, vérifier que l'âge est supérieur à 0)
+ lors de la création d'un utilisateur.
 Utilisez cette métaclasse pour définir une classe User avec des attributs id, name et age.
 
 3/ Implémentez une classe Message avec des attributs id, user_id et text.
