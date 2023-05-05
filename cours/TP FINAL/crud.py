@@ -15,7 +15,8 @@ def get_user(user_id):
     with database_connection() as cursor:
         cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
         user = cursor.fetchone()
-    return User(user.id, user.name, user.age)
+    if user is not None:
+        return User(user.id, user.name, user.age)
 
 
 def update_user(user):
@@ -34,7 +35,8 @@ def add_message(message):
         cursor.execute("INSERT INTO messages (user_id, text) VALUES (?, ?)", (message.user_id, message.text))
         # Amélioration : Renvoyer l'objet message avec l'id de complété.
         message.id = cursor.lastrowid
-    return message
+    if message is not None:
+        return message
 
 
 def get_message(message_id):
